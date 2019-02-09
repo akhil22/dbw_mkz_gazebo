@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<robot name="mkz" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+  <!-- Necessary includes -->
+  <xacro:include filename="$(find dbw_mkz_description)/urdf/vehicle_structure.urdf.xacro" />
+  <xacro:include filename="$(find dbw_mkz_description)/urdf/vehicle_gazebo.urdf.xacro" />
+ <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+  
+  <!-- Bolt-on sensors go here -->
+  <xacro:include filename="$(find dbw_mkz_description)/urdf/vehicle_sensors.urdf.xacro" />
+  <xacro:dbw_mkz_camera name="front_camera" parent_link="base_footprint" x="2.0" y="0" z="1.3" roll="0" pitch="0.6" yaw="0" />
+  <xacro:dbw_mkz_gps name="perfect_gps" parent_link="base_footprint" x="0.6" y="0" z="1.45" rate="50.0" ref_lat="45.0" ref_lon="-81.0" /> 
+ 
+  <xacro:dbw_mkz_imu name="imu" parent_link="base_footprint" x="0.6" y="0" z="1.6" rate="50.0" topic="data" /> 
+  <xacro:dbw_mkz_mobileye name="vehicle/mobileye" parent_link="base_footprint" x="2.0" y="0" z="1.25" rate="50.0" topic="mobileye" /> 
+  
+  <VLP-16 parent="base_footprint" name="velodyne_left" topic="velodyne_points" hz="10" samples="440"> <origin xyz="1.5 0.5 1.45" rpy="0 0 0" vehicle_name="vehicle"/> </VLP-16> 
+  <VLP-16 parent="base_footprint" name="velodyne_right" topic="velodyne_points" hz="10" samples="440"> <origin xyz="1.5 -0.5 1.45" rpy="0 0 0" vehicle_name="vehicle"/> </VLP-16> 
+
+</robot>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>dbw_mkz_gazebo</name>
+  <version>1.0.4</version>
+  <description>
+    Package used to simulate behavior of the MKZ DBW kit in Gazebo.
+  </description>
+  
+  <license>Proprietary</license>
+  <author email="mradovnikovich@dataspeedinc.com">Micho Radovnikovich</author>
+  <maintainer email="mradovnikovich@dataspeedinc.com">Micho Radovnikovich</maintainer>
+  <url type="website">http://dataspeedinc.com</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>dynamic_reconfigure</depend>
+  <depend>tf</depend>
+  <depend>gazebo_ros</depend>
+
+  <build_depend>dbw_mkz_can</build_depend>
+
+  <exec_depend>dbw_mkz</exec_depend>
+  <exec_depend>dbw_mkz_vision_sim</exec_depend>
+  <exec_depend>gazebo_plugins</exec_depend>
+  
+  <export>
+    <gazebo_ros gazebo_model_path="${prefix}/models/"/>
+  </export>
+
+</package>
